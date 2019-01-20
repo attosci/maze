@@ -7,6 +7,8 @@
 
 int move(int a, int &x, int &y, int x_size);
 int xy2s(int x, int y, int x_size);
+int s2x(int s, int x_size);
+int s2y(int s, int x_size);
 int epsilon_greedy(int epsilon, int s, int num_a, Qtable &qtable);
 void print_maze_with_Q(int x_size, int y_size, Qtable &qtable, Maze &maze);
 
@@ -29,6 +31,18 @@ int xy2s(int x, int y, int x_size) {
   int s;
   s = x + y * x_size;
   return s;
+}
+
+int s2x(int s, int x_size) {
+  int x;
+  x = s % x_size;
+  return x;
+}
+
+int s2y(int s, int x_size) {
+  int y;
+  y = s / x_size;
+  return y;
 }
 
 int epsilon_greedy(int epsilon, int s, int num_a, Qtable &qtable) {
@@ -84,7 +98,6 @@ int main() {
 
   Maze maze(x_size, y_size);
 
-  //maze.print(&std::cout);
   std::cout << maze;
 
   x = x_init;

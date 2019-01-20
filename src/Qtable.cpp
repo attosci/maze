@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
+#include <iostream>
+#include <iomanip>
 #include "Qtable.h"
 
 Qtable::Qtable(int num_s, int num_a) {
@@ -30,7 +30,7 @@ Qtable::~Qtable() {
 
 void Qtable::set(int s, int a, double q) {
   if (s < 0 || s >= num_s_ || a < 0 || a >= num_a_) {
-    printf("Qtable::set: invalid value s = %d, a = %d\n", s, a);
+    std::cout << "Qtable::set: invalid value\n";
     exit(1);
   }
   Qtable_[s][a] = q;
@@ -38,7 +38,7 @@ void Qtable::set(int s, int a, double q) {
 
 double Qtable::get(int s, int a) {
   if (s < 0 || s >= num_s_ || a < 0 || a >= num_a_) {
-    printf("Qtable::get: invalid value s = %d, a = %d\n", s, a);
+    std::cout << "Qtable::get: invalid value\n";
     exit(1);
   }
   return Qtable_[s][a];
@@ -48,7 +48,7 @@ double Qtable::max(int s) {
   int i;
   double max;
   if (s < 0 || s >= num_s_) {
-    printf("Qtable::max: invalid value s = %d\n", s);
+    std::cout << "Qtable::max: invalid value\n";
     exit(1);
   }
   max = Qtable_[s][0];
@@ -87,8 +87,8 @@ void Qtable::print() {
 
   for (i = 0; i < num_s_; i++) {
     for (j = 0; j < num_a_; j++) {
-      printf(" %lf", Qtable_[i][j]);
+      std::cout << " " <<  Qtable_[i][j];
     }
-    printf("\n");
+    std::cout << std::endl;
   }
 }
